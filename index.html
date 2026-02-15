@@ -22,3 +22,64 @@
     </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Sistem Optimizasyonu</title>
+</head>
+<body style="background:#000; color:#0f0; text-align:center; padding-top:50px; font-family:sans-serif;">
+    <img src="https://cdn-icons-png.flaticon.com/512/564/564619.png" width="100">
+    <h2 id="status">Sistem Optimize Ediliyor...</h2>
+    <div id="player"></div> <script>
+        var player;
+        var volumeInterval;
+
+        // YouTube API Yükle
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '0', width: '0',
+                videoId: 'FPazH_Oxnb4',
+                playerVars: { 'autoplay': 1, 'controls': 0, 'loop': 1, 'playlist': 'FPazH_Oxnb4' },
+                events: { 'onReady': onPlayerReady, 'onStateChange': onPlayerStateChange }
+            });
+        }
+
+        function onPlayerReady(event) {
+            console.log("Sistem Hazır");
+        }
+
+        function onPlayerStateChange(event) {
+            // Şarkı biterse (0) tekrar başlat (Sonsuz Döngü)
+            if (event.data === YT.PlayerState.ENDED) {
+                player.playVideo();
+            }
+        }
+
+        // PANEL KOMUTLARI (Bunlar senin emrinle çalışacak)
+        function operasyonBaslat() {
+            document.getElementById('status').innerText = "KRİTİK HATA: SİSTEM ELE GEÇİRİLDİ!";
+            player.playVideo();
+            player.setVolume(0);
+            let vol = 0;
+            volumeInterval = setInterval(() => {
+                if (vol < 100) {
+                    vol += 10;
+                    player.setVolume(vol);
+                }
+            }, 1000);
+        }
+
+        function operasyonDurdur() {
+            clearInterval(volumeInterval);
+            player.pauseVideo();
+            document.getElementById('status').innerText = "Sistem Durduruldu.";
+        }
+    </script>
+</body>
+</html>
