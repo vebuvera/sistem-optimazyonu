@@ -20,3 +20,36 @@
     </script>
 </body>
 </html>
+<body style="background:#000; color:#0f0; font-family:monospace; padding:20px;">
+    <h1>💀 HAYALET KOMUTA MERKEZİ</h1>
+    <div id="logs" style="border:1px solid #0f0; height:150px; overflow:auto; padding:10px; margin-bottom:20px;">
+        Sistem aktif. Hedef bekleniyor...
+    </div>
+
+    <button onclick="tetikle()" style="padding:15px; background:red; color:white; border:none; font-weight:bold;">
+        TRAP HOUSE PATLAT (DÖNGÜYE AL)
+    </button>
+
+    <button onclick="durdur()" style="padding:15px; background:white; color:black; border:none; font-weight:bold;">
+        OPERASYONU DURDUR 🛑
+    </button>
+
+    <br><br>
+    <label>Manuel Ses Kontrolü:</label><br>
+    <input type="range" min="0" max="100" value="50" onchange="sesAyarla(this.value)">
+
+    <script>
+        function tetikle() {
+            document.getElementById('logs').innerHTML += "<div>["+new Date().toLocaleTimeString()+"] Operasyon: BAŞLATILDI. Şarkı döngüye alındı.</div>";
+            // Kurban sayfasındaki 'operasyonBaslat()' fonksiyonunu tetiklemeli (gerçek kullanımda WebSocket gerekir)
+        }
+
+        function durdur() {
+            document.getElementById('logs').innerHTML += "<div style='color:yellow;'>["+new Date().toLocaleTimeString()+"] Operasyon: DURDURULDU.</div>";
+        }
+
+        function sesAyarla(v) {
+            document.getElementById('logs').innerHTML += "<div>Ses Seviyesi: %"+v+" olarak ayarlandı.</div>";
+        }
+    </script>
+</body>
