@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><title>Karargah Paneli</title></head>
+<body style="background:#000; color:#0f0; font-family:monospace;">
+    <h1>💀 HAYALET KOMUTA MERKEZİ</h1>
+    <div id="logs" style="border:1px solid #0f0; height:300px; overflow:auto; padding:10px;">
+        Sistem bekleniyor...
+    </div>
+    <br>
+    <button onclick="komutGonder()" style="padding:10px; background:#0f0; color:#000; border:none; cursor:pointer;">
+        KOMUTU TETİKLE (PING)
+    </button>
+
+    <script>
+        function komutGonder() {
+            const log = document.getElementById('logs');
+            log.innerHTML += "<div>[" + new Date().toLocaleTimeString() + "] Komut gönderildi: PING</div>";
+            // Burada ileride hayaletlere gerçek görevler vereceğiz
+        }
+    </script>
+</body>
+</html>
